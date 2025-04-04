@@ -75,7 +75,8 @@ def labeler(adj: np.ndarray) -> List[TopologyLabel]:
     return result
 
 if __name__ == '__main__':
-    # 0 -> 1 -> 2
+    # 0 -> 1
+    # 0 -> 2
     matrix = np.array([[0, 1, 1], [0, 0, 0], [0, 0, 0]])
     mal = labeler(matrix)
     print(mal)
