@@ -1,6 +1,8 @@
 from typing import List
 
 import numpy as np
+import time
+from openai import OpenAI
 
 class TopologyLabel:
     def __init__(self, nid: int, collider=False, chain=False, fork=False):
@@ -75,8 +77,20 @@ def labeler(adj: np.ndarray) -> List[TopologyLabel]:
     return result
 
 if __name__ == '__main__':
+    client = OpenAI()
+
+    start_time = time.perf_counter()
+    response = client.responses.create(
+        model="gpt-4.1",
+        input="Write a one-sentence bedtime story about a unicorn."
+    )
+    x = response.output_text
+    end_time = time.perf_counter()
+    duration = (end_time - start_time)
+    print("Completes in {}s".format(duration))
+    print(response.output_text)
     # 0 -> 1
     # 0 -> 2
-    matrix = np.array([[0, 1, 1], [0, 0, 0], [0, 0, 0]])
-    mal = labeler(matrix)
-    print(mal)
+    # matrix = np.array([[0, 1, 1], [0, 0, 0], [0, 0, 0]])
+    # mal = labeler(matrix)
+    # print(mal)
