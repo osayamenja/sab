@@ -30,7 +30,7 @@ class GraphNode:
         return str(self)
 
 def labeler(adj: np.ndarray) -> List[TopologyLabel]:
-    # asserts the validity of the layout of the input adjacency matrix
+    # asserts the layout of the input adjacency matrix
     assert len(adj.shape) == 2 and adj.shape[0] == adj.shape[1]
     n = adj.shape[0]
     result : List[TopologyLabel] = []
